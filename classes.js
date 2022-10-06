@@ -5,7 +5,8 @@ class Sprite {
         image,
         frames = {
             max:1,
-        }
+        },
+        sprites,
     }){
         this.position = position
         this.image = image
@@ -16,6 +17,7 @@ class Sprite {
             this.height = this.image.height 
         }
         this.moving = false
+        this.sprites = sprites
     }
     draw(){
         /* c.drawImage(
@@ -63,13 +65,15 @@ class Boundary {
         this.height = 48
     }
     draw(){
-        c.fillStyle = ' rgb(0, 0, 255, 0.2)'
-        c.fillRect(
-            this.position.x,
-            this.position.y,
-            this.width,
-            this.height,
-        )
+        if(!debugDev){
+            c.fillStyle = ' rgb(0, 0, 255, 0.2)'
+            c.fillRect(
+                this.position.x,
+                this.position.y,
+                this.width,
+                this.height,
+                )
+            }
     }
 }
 const boundaries = []
