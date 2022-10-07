@@ -5,9 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+        }
         body {
-            background-color: black;
+            background-color: black;           
+        }
+        button{
+            border: 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover{ 
+            background-color: #ddd;
         }
     </style>
 </head>
@@ -25,7 +41,137 @@
             opacity: 0;
             pointer-events: none;
             "></div>
-            <canvas></canvas>
+        <!--Draggle UI hp-->
+        <div 
+        style="
+        background-color: white;
+        width: 250px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        border: 4px solid black;
+        padding: 12px;
+        ">
+            <section 
+            style="
+            font-size: 16px;
+            ">Draggle</section>
+            <section style="position: relative;">
+                <div 
+                style="
+                height: 5px;
+                background-color: #ccc;
+                margin-top: 10px;
+            "></div>
+                <div 
+                id="recipientHealthBar"
+                style="
+                height: 5px;
+                background-color: green;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+            "></div>
+            </section>
+        </div>
+        <!--Emby UI hp-->
+        <div 
+        style="
+        background-color: white;
+        width: 250px;
+        position: absolute;
+        top: 330px;
+        right: 50px;
+        border: 4px solid black;
+        padding: 12px;
+        ">
+            <section 
+            style="
+            font-size: 16px;
+            ">Emby</section>
+            <section style="position: relative;">
+                <div 
+                style="
+                height: 5px;
+                background-color: #ccc;
+                margin-top: 10px;
+            "></div>
+                <div 
+                id="playerHealthBar"
+                style="
+                height: 5px;
+                background-color: green;
+                
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+            "></div>
+            </section>
+        </div>
+
+            
+        <canvas></canvas>
+        <!--battle UI rectangle-->
+        <div 
+        style="
+            background-color: white;
+            position: absolute;
+            bottom: 0;
+            left:0;
+            right: 0;
+            height: 140px;
+            border-top: solid 4px black;
+            display:  flex;
+            ">
+            <!-- text container-->
+            <div 
+            id="dialogueBox"
+            style="
+                background-color: blueviolet;
+                position: absolute;
+                top:0;
+                left:0;
+                bottom:0;
+                right:0;
+                padding: 12px;
+                display: none;
+                cursor: pointer;
+            ">missed action</div>
+            <!-- text container-->
+            <div 
+            id="attacksBox"
+            style="
+            width: 66.66%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            
+            ">
+                <!--attack buttons menu
+                Waterblast
+                Quicken
+                -->
+                
+            </div>
+            <div 
+            style="
+            width: 33.33%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 4px solid black;
+            ">
+                <!--attack buttons menu-->
+                <section 
+                id="attackType"
+                style="
+                font-size:16px
+                ">
+                attack type
+                </section>
+            </div>
+            </div>
     </div>
 
 
@@ -36,7 +182,10 @@
         </script>
     <script src="./data/battleZones.js"></script>
     <script src="./data/collisions.js"></script>
+    <script src="./data/attacks.js"></script>
+    <script src="./data/monsters.js"></script>
     <script src="classes.js"></script>
     <script src="index.js"></script>
+    <script src="battleScene.js"></script>
 </body> 
 </html>

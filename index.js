@@ -71,7 +71,8 @@ const player = new Sprite({
         y: canvas.height * 0.5 -this.image.height * 0.5, */ 
     },
     frames:{
-        max: 4
+        max: 4,
+        hold: 10,
     },
     image: playerDownImage,
     sprites: {
@@ -79,7 +80,8 @@ const player = new Sprite({
         left: playerLeftImage,
         down: playerDownImage,
         right: playerRightImage,
-    }
+    },
+
 
 })
 const background = new Sprite({
@@ -142,7 +144,7 @@ function animate(){
         
         
         let moving = true
-        player.moving = false
+        player.animate = false
             //if (playerImage.position.x + playerImage.width)
             if ( battle.initiated) return
             // activate battle & collision croped
@@ -211,7 +213,7 @@ function animate(){
         
         if (keys.w.pressed
             && lastKey === 'w'){
-                player.moving = true
+                player.animate = true
                 player.image = player.sprites.up
 
                 for (let i = 0; i < boundaries.length; i++){
@@ -238,7 +240,7 @@ function animate(){
                 
         } else if(keys.a.pressed
             && lastKey === 'a'){
-                player.moving = true
+                player.animate = true
                 player.image = player.sprites.left
                 for (let i = 0; i < boundaries.length; i++){
                     const boundary = boundaries[i]
@@ -262,9 +264,9 @@ function animate(){
                 })
         } else if(keys.s.pressed
             && lastKey === 's'){
-                player.moving = true
+                player.animate = true
                 player.image = player.sprites.down
-                player.moving = true
+                player.animate = true
                 for (let i = 0; i < boundaries.length; i++){
                     const boundary = boundaries[i]
                     if(
@@ -287,7 +289,7 @@ function animate(){
                 })
         } else if(keys.d.pressed
             && lastKey === 'd'){
-                player.moving = true
+                player.animate = true
                 player.image = player.sprites.right
                 for (let i = 0; i < boundaries.length; i++){
                     const boundary = boundaries[i]
@@ -311,23 +313,11 @@ function animate(){
                 })
         }
     }
-    animate()
+    //animate()
     
-    const battleBackgroundImage = new Image()
-    battleBackgroundImage.src = './img/battle/battleBackground.png'
-    const battleBackground = new Sprite({
-        position: {
-            x:0,
-            y:0
-        },
-        image: battleBackgroundImage,
 
-
-    })
-    function animateBattle() {
-        window.requestAnimationFrame(animateBattle)
-        battleBackground.draw()
-    }
+                    
+                
 
     let lastKey = ''
 window.addEventListener('keydown', (e)=>{
