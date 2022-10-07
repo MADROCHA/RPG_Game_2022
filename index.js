@@ -178,6 +178,11 @@ function animate(){
                     // deactivate animation loop
                     window.cancelAnimationFrame(animationID)
                     // deactivate animation loop
+                    //
+                    audio.Map.stop()
+                    audio.initBattle.play()
+                    audio.battle.play()
+                    //
                     battle.initiated = true
                     gsap.to('#overlappingDiv', {
                         opacity: 1,
@@ -190,6 +195,7 @@ function animate(){
                                 duration: 0.4,
                                 onComplete() {
                                     
+                                    initBattle()
                                     animateBattle()
                                     gsap.to('#overlappingDiv',{
                                         opacity: 0,
@@ -313,7 +319,7 @@ function animate(){
                 })
         }
     }
-    //animate()
+
     
 
                     
@@ -358,6 +364,13 @@ window.addEventListener('keyup', (e)=>{
         case 'd':
             keys.d.pressed = false
             break
+    }
+})
+let clicked = false
+addEventListener('click', ()=>{
+    if(!clicked){
+        audio.Map.play()
+        clicked= true
     }
 })
 

@@ -3,25 +3,30 @@ const attacks = {
         name:'Tackle',
         damage: 10,
         type: 'Normal',
-    },
-    Fireball:{
-        name:'Fireball',
-        damage: 25,
-        type: 'Fire',
-    },
-    Waterblast:{
-        name:'Waterblast',
-        damage: 25,
-        type: 'Water',
-    },
-    IceSpike:{
-        name:'IceSpike',
-        damage: 25,
-        type: 'Ice',
+        color: 'black',
     },
     Quicken:{
         name:'Quicken',
         damage: 5,
         type: 'Normal',
+        color: 'black',
+    },
+    Fireball:{
+        name:'Fireball',
+        damage: 25,
+        type: 'Fire',
+        color: 'red',
+    },
+    Waterblast:{
+        name:'Waterblast',
+        damage: 25,
+        type: 'Water',
+        color: 'cornflowerblue',
+    },
+    IceSpike:{
+        name:'IceSpike',
+        damage: 25,
+        type: 'Ice',
+        color: 'DeepSkyBlue',
     },
 }

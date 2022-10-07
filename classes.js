@@ -15,18 +15,20 @@ class Sprite {
         rotation = 0,
     }){
         this.position = position
-        this.image = image
+        this.image = new Image()
         this.frames = {...frames, val:0, elapsed:0} 
 
         this.image.onload = ()=> {
             this.width = this.image.width / frames.max
             this.height = this.image.height 
         }
+        this.image.src = image.src
+        
         this.animate = animate
         this.sprites = sprites
         this.opacity = 1
         //this.health = this.health
-       
+        
         this.rotation = rotation
     }
     draw(){
@@ -114,6 +116,20 @@ class Monster extends Sprite{
         this.attacks = attacks
 
     }
+    faint(){
+        //console.log('fainted')
+        document.querySelector('#dialogueBox').innerHTML = 
+        this.name + ' fainted!'
+        gsap.to(this.position, {
+            y: this.position.y + 20
+        })
+        gsap.to(this, {
+            opacity:0,
+        })
+        audio.battle.stop()
+        audio.victory.play()
+
+    }
     attack({attack,recipient, renderedSprites}){
         document.querySelector('#dialogueBox').style.display = 'block'
         document.querySelector('#dialogueBox').innerHTML = 
@@ -125,10 +141,13 @@ class Monster extends Sprite{
         let rotation = 1
         if(this.isEnemy) rotation = -2.2
 
-        this.health = this.health -attack.damage
+        recipient.health -= attack.damage
 
         switch (attack.name){
             case 'Fireball':
+                //
+                audio.initFireball.play()
+                //
                 const fireballImage = new Image();
                 fireballImage.src = './img/battle/fireball.png'
                 const fireball = new Sprite({
@@ -153,8 +172,11 @@ class Monster extends Sprite{
                     y:recipient.position.y,
                     onComplete:()=>{
                         // get hit
+                        //
+                        audio.fireballHit.play()
+                        //
                         gsap.to(healthBar, {
-                            width: this.health + '%',
+                            width: recipient.health + '%',
                         })
                         //
                         gsap.to(recipient.position, {
@@ -187,8 +209,11 @@ class Monster extends Sprite{
                 duration: 0.1,
                 onComplete: ()=>{
                     // get hit
+                    //
+                    audio.tackleHit.play()
+                    //
                     gsap.to(healthBar, {
-                        width: this.health + '%',
+                        width: recipient.health + '%',
                     })
                     //
                     gsap.to(recipient.position, {
@@ -212,6 +237,7 @@ class Monster extends Sprite{
         }
 
     }
+
 }
 class Boundary {
     static width = 48

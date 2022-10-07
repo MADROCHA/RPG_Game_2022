@@ -40,8 +40,15 @@
             right:0;
             opacity: 0;
             pointer-events: none;
+            z-index: 10;
             "></div>
         <!--Draggle UI hp-->
+        
+            
+        <canvas></canvas>
+
+    <div id="userInterface" style="display: none;">
+        
         <div 
         style="
         background-color: white;
@@ -107,12 +114,10 @@
                 top: 0;
                 left: 0;
                 right: 0;
-            "></div>
+                "></div>
             </section>
         </div>
 
-            
-        <canvas></canvas>
         <!--battle UI rectangle-->
         <div 
         style="
@@ -173,13 +178,18 @@
             </div>
             </div>
     </div>
+</div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" 
+    integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" 
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" 
     integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" 
     crossorigin="anonymous" 
     referrerpolicy="no-referrer">
         </script>
+    <script src="./data/audio.js"></script>
     <script src="./data/battleZones.js"></script>
     <script src="./data/collisions.js"></script>
     <script src="./data/attacks.js"></script>
