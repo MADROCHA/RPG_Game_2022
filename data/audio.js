@@ -34,6 +34,16 @@ const audio = {
         html5: true,
         volume: 0.2,
     }),
+    icespikeHit: new Howl({
+        src: './audio/icespikeHit.mp3',
+        html5: true,
+        volume: 0.2,
+    }),
+    waterblastInit: new Howl({
+        src: './audio/waterblastInit.mp3',
+        html5: true,
+        volume: 0.2,
+    }),
     victory: new Howl({
         src: './audio/victory.wav',
         html5: true,

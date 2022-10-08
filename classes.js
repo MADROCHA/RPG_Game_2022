@@ -125,6 +125,15 @@ class Monster extends Sprite{
         })
         gsap.to(this, {
             opacity:0,
+
+            // added to fix position after fainted
+            onComplete:()=>{
+            
+                gsap.to(this.position, {
+                    y: this.position.y - 20
+                })
+            }
+            //
         })
         audio.battle.stop()
         audio.victory.play()
@@ -233,7 +242,103 @@ class Monster extends Sprite{
             }).to(this.position, {
                 x:this.position.x 
             })    
-            break;    
+            break;
+        case 'IceSpike':
+            const iceSpikeImage = new Image();
+            iceSpikeImage.src = 'img/battle/icespike1.png'
+            const icespike = new Sprite({
+                position:{
+                    x:recipient.position.x,
+                    y:recipient.position.y + recipient.height *0.5
+                },
+                image: iceSpikeImage,
+                frames:{
+                    max: 9,
+                    hold:10,
+                },
+                animate:true,
+
+            })
+            renderedSprites.splice(1, 0, icespike)
+
+            gsap.to(icespike.position,{
+                x:icespike.position.x,
+                y:icespike.position.y -30,
+                
+                /* repeat:1,
+                yoyo:1, */
+                onComplete:()=>{
+                    //getHit
+                    audio.icespikeHit.play()
+                    gsap.to(healthBar, {
+                        width: recipient.health + '%',
+                    })
+                    gsap.to(recipient.position, {
+                        x: recipient.position.x - 10,
+                        yoyo: true,
+                        repeat: 7,
+                        duration: 0.20,
+                        
+                    })
+                    gsap.to(recipient, {
+                        opacity: 0,
+                        repeat: 5,
+                        yoyo: true,
+                        duration: 0.20,
+                    })
+                    renderedSprites.splice(1, 1)
+                }
+            })
+            break;
+            case 'Waterblast':
+                //
+                //
+                const waterblastImage = new Image()
+                waterblastImage.src = './img/battle/waterblast.png'
+                const waterblast = new Sprite ({
+                    position:{
+                        x:this.position.x,
+                        y:this.position.y
+                    },
+                    image: waterblastImage,
+                    frames: {
+                        max:4,
+                        hold:10
+                    },
+                    animate: true,
+                    rotation,
+                })
+                renderedSprites.splice(1, 0, waterblast)
+                audio.waterblastInit.play()
+
+                gsap.to(waterblast.position,{
+                    x:recipient.position.x,
+                    y:recipient.position.y,
+                    onComplete:()=>{
+                        // get hit
+                        //
+                        //audio.waterblastHit.play()
+                        //
+                        gsap.to(healthBar, {
+                            width: recipient.health + '%',
+                        })
+                        //
+                        gsap.to(recipient.position, {
+                            x: recipient.position.x - 10,
+                            yoyo: true,
+                            repeat: 7,
+                            duration: 0.08,
+                            
+                        })
+                        gsap.to(recipient, {
+                            opacity: 0,
+                            repeat: 5,
+                            yoyo: true,
+                            duration: 0.08,
+                        })
+                        renderedSprites.splice(1, 1)
+                    }
+                })
         }
 
     }

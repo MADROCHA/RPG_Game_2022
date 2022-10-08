@@ -19,7 +19,7 @@ const attacks = {
     },
     Waterblast:{
         name:'Waterblast',
-        damage: 25,
+        damage: 50,
         type: 'Water',
         color: 'cornflowerblue',
     },
