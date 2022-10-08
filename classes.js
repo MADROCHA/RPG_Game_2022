@@ -254,21 +254,22 @@ class Monster extends Sprite{
                 image: iceSpikeImage,
                 frames:{
                     max: 9,
-                    hold:10,
+                    hold:12,
                 },
                 animate:true,
 
             })
             renderedSprites.splice(1, 0, icespike)
-
+            
+            
             gsap.to(icespike.position,{
-                x:icespike.position.x,
-                y:icespike.position.y -30,
-                
-                /* repeat:1,
-                yoyo:1, */
-                onComplete:()=>{
-                    //getHit
+                    x:icespike.position.x,
+                    y:icespike.position.y -30,
+                    onComplete:()=>{
+                        
+                        /* repeat:1,
+                        yoyo:1, */
+                        //getHit
                     audio.icespikeHit.play()
                     gsap.to(healthBar, {
                         width: recipient.health + '%',
@@ -285,12 +286,17 @@ class Monster extends Sprite{
                         repeat: 5,
                         yoyo: true,
                         duration: 0.20,
+                        onComplete:()=>{
+
+                            renderedSprites.splice(1, 1)
+                        } 
                     })
-                    renderedSprites.splice(1, 1)
+                    //renderedSprites.splice(1, 1)
+
                 }
             })
             break;
-            case 'Waterblast':
+            /* case 'Waterblast':
                 //
                 //
                 const waterblastImage = new Image()
@@ -339,10 +345,58 @@ class Monster extends Sprite{
                         renderedSprites.splice(1, 1)
                     }
                 })
+                */
+                case 'Waterblast':
+                    //
+                    //
+                    const waterblastImage = new Image()
+                    waterblastImage.src = './img/battle/waterblast.png'
+                    const waterblast = new Sprite ({
+                        position:{
+                            //x:recipient.position.x + this.width *0.10,
+                            //y:recipient.position.y -30
+                            x: recipient.position.x,
+                            y: recipient.position.y
+                        },
+                        image: waterblastImage,
+                        frames: {
+                            max:4,
+                            hold:15
+                        },
+                        animate: true,
+                        //rotation,
+                    })
+                    renderedSprites.splice(1, 0, waterblast)
+                    audio.waterblastInit.play()
+                    
+
+                    gsap.to(healthBar, {
+                        width: recipient.health + '%',
+                    })
+                    gsap.to(recipient.position, {
+                        x: recipient.position.x - 10,
+                        yoyo: true,
+                        repeat: 7,
+                        duration: 0.20,
+                        
+                    })
+                    gsap.to(recipient, {
+                        opacity: 0,
+                        repeat: 5,
+                        yoyo: true,
+                        duration: 0.20,
+                    })
+                    gsap.to(waterblast,{
+                        duration:0.9,
+                        onComplete:()=>{
+    
+                            renderedSprites.splice(1, 1)
+                        }, 
+                    })
+
+    
         }
-
-    }
-
+    } 
 }
 class Boundary {
     static width = 48

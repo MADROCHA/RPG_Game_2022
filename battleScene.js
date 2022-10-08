@@ -16,6 +16,7 @@ const battleBackground = new Sprite({
 //const queue = []
 let draggle
 let emby
+let racuung
 let renderedSprites
 let queue 
 
@@ -41,6 +42,7 @@ function initBattle(){
 
     draggle = new Monster(monsters.Draggle)
     emby = new Monster(monsters.Emby)
+    racuung = new Monster(monsters.Racuung)
     renderedSprites = [draggle, emby]
     queue = []
 
@@ -136,9 +138,9 @@ function animateBattle() {
         sprite.draw()
     })
 }
-//animate()
-initBattle()
-animateBattle()
+animate()
+//initBattle()
+//animateBattle()
 //
 document.querySelector('#dialogueBox').addEventListener('click', (e)=>{
     if (queue.length > 0 ){
