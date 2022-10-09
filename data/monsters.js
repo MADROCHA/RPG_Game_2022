@@ -49,7 +49,14 @@ const monsters = {
         //health: 100,
         isEnemy: true,
         name: 'Draggel',
-        attacks: [attacks.Tackle, attacks.Waterblast]
+        attacks: [
+            //attacks.Tackle, 
+            //attacks.Waterblast
+            //attacks.IceSpike,
+            attacks.Fireball, 
+
+
+        ]
     },
     Racuung: {
         position:{

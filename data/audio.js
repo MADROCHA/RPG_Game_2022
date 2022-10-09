@@ -37,7 +37,7 @@ const audio = {
     icespikeHit: new Howl({
         src: './audio/icespikeHit.mp3',
         html5: true,
-        volume: 0.2,
+        volume: 0.9,
     }),
     waterblastInit: new Howl({
         src: './audio/waterblastInit.mp3',

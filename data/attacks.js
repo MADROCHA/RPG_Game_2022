@@ -1,7 +1,7 @@
 const attacks = {
     Tackle:{
         name:'Tackle',
-        damage: 10,
+        damage: 5,
         type: 'Normal',
         color: 'black',
     },
@@ -13,19 +13,19 @@ const attacks = {
     },
     Fireball:{
         name:'Fireball',
-        damage: 25,
+        damage: 5,
         type: 'Fire',
         color: 'red',
     },
     Waterblast:{
         name:'Waterblast',
-        damage: 50,
+        damage: 5,
         type: 'Water',
         color: 'cornflowerblue',
     },
     IceSpike:{
         name:'IceSpike',
-        damage: 25,
+        damage: 5,
         type: 'Ice',
         color: 'DeepSkyBlue',
     },

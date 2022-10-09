@@ -254,7 +254,7 @@ class Monster extends Sprite{
                 image: iceSpikeImage,
                 frames:{
                     max: 9,
-                    hold:12,
+                    hold:13,
                 },
                 animate:true,
 
